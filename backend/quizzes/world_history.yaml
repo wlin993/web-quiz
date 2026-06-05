@@ -1,0 +1,26 @@
+title: World History
+description: Key events and figures throughout history
+questions:
+  - text: In which year did World War II end?
+    options: [1943, 1944, 1945, 1946]
+    correct: 1945
+
+  - text: Who was the first person to walk on the Moon?
+    options: [Buzz Aldrin, Yuri Gagarin, Neil Armstrong, John Glenn]
+    correct: Neil Armstrong
+
+  - text: The Renaissance originated in which country?
+    options: [France, Spain, Germany, Italy]
+    correct: Italy
+
+  - text: Which ancient wonder was located in Alexandria?
+    options: [The Colossus, The Lighthouse, The Mausoleum, The Hanging Gardens]
+    correct: The Lighthouse
+
+  - text: Who wrote the Communist Manifesto?
+    options:
+      - Lenin and Stalin
+      - Marx and Engels
+      - Trotsky and Bakunin
+      - Weber and Durkheim
+    correct: Marx and Engels

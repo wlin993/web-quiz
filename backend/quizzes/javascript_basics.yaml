@@ -1,0 +1,22 @@
+title: JavaScript Basics
+description: Test your knowledge of JS fundamentals
+questions:
+  - text: What does typeof null return?
+    options: [null, object, undefined, string]
+    correct: object
+
+  - text: Which method removes the last element of an array?
+    options: [shift(), pop(), splice(), slice()]
+    correct: pop()
+
+  - text: What is the output of 0.1 + 0.2 === 0.3 in JS?
+    options: [true, false, NaN, undefined]
+    correct: false
+
+  - text: Which keyword declares a block-scoped variable?
+    options: [var, let, function, static]
+    correct: let
+
+  - text: What does === check?
+    options: [Value only, Type only, Value and type, Reference]
+    correct: Value and type

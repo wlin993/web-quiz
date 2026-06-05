@@ -1,0 +1,26 @@
+title: Mathematics
+description: Arithmetic, algebra, and logic puzzles
+questions:
+  - text: What is the value of π rounded to two decimal places?
+    options: [3.12, 3.14, 3.16, 3.18]
+    correct: 3.14
+
+  - text: What is the square root of 144?
+    options: [11, 12, 13, 14]
+    correct: 12
+
+  - text: If f(x) = 2x + 3, what is f(5)?
+    options: [10, 11, 12, 13]
+    correct: 13
+
+  - text: How many sides does a heptagon have?
+    options: [5, 6, 7, 8]
+    correct: 7
+
+  - text: What is 15% of 200?
+    options: [20, 25, 30, 35]
+    correct: 30
+
+  - text: What is the next prime number after 13?
+    options: [14, 15, 16, 17]
+    correct: 17

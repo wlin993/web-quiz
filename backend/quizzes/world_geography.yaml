@@ -1,0 +1,26 @@
+title: World Geography
+description: How well do you know the world's countries and capitals?
+questions:
+  - text: What is the capital of Australia?
+    options: [Sydney, Melbourne, Canberra, Brisbane]
+    correct: Canberra
+
+  - text: Which is the longest river in the world?
+    options: [Amazon, Yangtze, Mississippi, Nile]
+    correct: Nile
+
+  - text: Which country has the most natural lakes?
+    options: [Russia, Canada, USA, Brazil]
+    correct: Canada
+
+  - text: What is the smallest country in the world by area?
+    options: [Monaco, San Marino, Vatican City, Liechtenstein]
+    correct: Vatican City
+
+  - text: Which continent has the most countries?
+    options: [Asia, Europe, Africa, South America]
+    correct: Africa
+
+  - text: The Sahara Desert is located on which continent?
+    options: [Asia, Australia, South America, Africa]
+    correct: Africa

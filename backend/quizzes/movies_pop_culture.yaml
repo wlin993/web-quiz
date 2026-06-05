@@ -1,0 +1,22 @@
+title: Movies & Pop Culture
+description: Trivia on blockbusters and iconic characters
+questions:
+  - text: Which film won the first Academy Award for Best Picture?
+    options: [Sunrise, Wings, The Jazz Singer, Seventh Heaven]
+    correct: Wings
+
+  - text: What is the name of the fictional kingdom in Frozen?
+    options: [Arendelle, Duloc, Agrabah, Corona]
+    correct: Arendelle
+
+  - text: Who played Tony Stark / Iron Man in the MCU?
+    options: [Chris Evans, Mark Ruffalo, Robert Downey Jr., Chris Hemsworth]
+    correct: Robert Downey Jr.
+
+  - text: In The Matrix, which pill does Neo take?
+    options: [Blue, Red, Green, White]
+    correct: Red
+
+  - text: Which studio produced the Toy Story franchise?
+    options: [DreamWorks, Disney, Pixar, Illumination]
+    correct: Pixar

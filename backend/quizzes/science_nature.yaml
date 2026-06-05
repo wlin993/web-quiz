@@ -1,0 +1,22 @@
+title: Science & Nature
+description: Explore biology, chemistry, and physics
+questions:
+  - text: What is the chemical symbol for gold?
+    options: [Go, Gd, Au, Ag]
+    correct: Au
+
+  - text: How many bones are in the adult human body?
+    options: [196, 206, 216, 226]
+    correct: 206
+
+  - text: What gas do plants absorb during photosynthesis?
+    options: [Oxygen, Nitrogen, Carbon dioxide, Hydrogen]
+    correct: Carbon dioxide
+
+  - text: What is the speed of light in a vacuum (approx)?
+    options: ["300,000 km/s", "150,000 km/s", "450,000 km/s", "30,000 km/s"]
+    correct: "300,000 km/s"
+
+  - text: What is the most abundant element in the universe?
+    options: [Oxygen, Helium, Carbon, Hydrogen]
+    correct: Hydrogen

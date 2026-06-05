@@ -1,0 +1,30 @@
+title: Web Development
+description: HTML, CSS, and general web concepts
+questions:
+  - text: What does CSS stand for?
+    options:
+      - Computer Style Sheets
+      - Creative Style Sheets
+      - Cascading Style Sheets
+      - Colorful Style Sheets
+    correct: Cascading Style Sheets
+
+  - text: Which HTML tag is used for the largest heading?
+    options: ["<h6>", "<heading>", "<head>", "<h1>"]
+    correct: "<h1>"
+
+  - text: What does the HTTP status code 404 mean?
+    options: [Server Error, Unauthorized, Not Found, Forbidden]
+    correct: Not Found
+
+  - text: Which property controls text size in CSS?
+    options: [text-size, font-size, text-style, font-style]
+    correct: font-size
+
+  - text: What does DOM stand for?
+    options:
+      - Document Object Model
+      - Data Object Map
+      - Dynamic Object Method
+      - Document Orientation Module
+    correct: Document Object Model

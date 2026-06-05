@@ -1,31 +1,51 @@
-"""Run once to populate the DB with sample quizzes: uv run python seed.py"""
+"""Seed sample quizzes into the DB: uv run python seed.py"""
+import yaml
 import requests
+from pathlib import Path
 
 BASE = "http://localhost:8000"
 
-quizzes = [
-    {
-        "title": "JavaScript Basics",
-        "description": "Test your knowledge of JS fundamentals",
-        "questions": [
-            {"text": "What does typeof null return?", "options": ["null", "object", "undefined", "string"], "correct_index": 1},
-            {"text": "Which method removes the last element of an array?", "options": ["shift()", "pop()", "splice()", "slice()"], "correct_index": 1},
-            {"text": "What is the output of 0.1 + 0.2 === 0.3 in JS?", "options": ["true", "false", "NaN", "undefined"], "correct_index": 1},
-            {"text": "Which keyword declares a block-scoped variable?", "options": ["var", "let", "function", "static"], "correct_index": 1},
-            {"text": "What does === check?", "options": ["Value only", "Type only", "Value and type", "Reference"], "correct_index": 2},
-        ],
-    },
-    {
-        "title": "Python Fundamentals",
-        "description": "Core Python concepts",
-        "questions": [
-            {"text": "What is the output of type([]) in Python?", "options": ["<class list>", "<class array>", "list", "array"], "correct_index": 0},
-            {"text": "Which of these creates a tuple?", "options": ["[1, 2]", "{1, 2}", "(1, 2)", "<1, 2>"], "correct_index": 2},
-            {"text": "What does len(\"hello\") return?", "options": ["4", "5", "6", "Error"], "correct_index": 1},
-        ],
-    },
-]
+paths = sorted(Path("quizzes").glob("*.yaml"))
+if not paths:
+    print("No YAML files found in quizzes/")
+    raise SystemExit(1)
 
-for q in quizzes:
-    r = requests.post(f"{BASE}/api/quizzes", json=q)
-    print(r.status_code, r.json()["title"])
+print("Available quizzes:")
+for i, p in enumerate(paths, 1):
+    quiz = yaml.safe_load(p.read_text())
+    print(f"  {i}) {quiz['title']}")
+
+print("\nEnter numbers to seed (e.g. 1 3 5), or press Enter for all:")
+raw = input("> ").strip()
+
+if raw:
+    indices = []
+    for token in raw.split():
+        if not token.isdigit() or not (1 <= int(token) <= len(paths)):
+            print(f"Invalid selection: {token}")
+            raise SystemExit(1)
+        indices.append(int(token) - 1)
+    selected = [paths[i] for i in indices]
+else:
+    selected = paths
+
+print()
+for path in selected:
+    quiz = yaml.safe_load(path.read_text())
+    payload = {
+        "title": quiz["title"],
+        "description": quiz.get("description", ""),
+        "questions": [],
+    }
+    for q in quiz["questions"]:
+        options = [str(o) for o in q["options"]]
+        correct = str(q["correct"])
+        if correct not in options:
+            raise ValueError(f"{path.name}: correct '{correct}' not in options {options}")
+        payload["questions"].append({
+            "text": q["text"],
+            "options": options,
+            "correct_index": options.index(correct),
+        })
+    r = requests.post(f"{BASE}/api/quizzes", json=payload)
+    print(f"  {r.status_code} {r.json()['title']}")

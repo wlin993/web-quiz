@@ -1,5 +1,9 @@
 import os
 import uuid
+from contextlib import asynccontextmanager
+from pathlib import Path
+
+import yaml
 from fastapi import FastAPI, Depends, HTTPException, Cookie, Response
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
@@ -10,7 +14,44 @@ from database import engine, get_db
 
 models.Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="Web Quiz API")
+
+def _seed_from_yaml(db: Session) -> None:
+    quiz_dir = Path(__file__).parent / "quizzes"
+    if not quiz_dir.is_dir():
+        return
+    existing_titles = {q.title for q in db.query(models.Quiz.title).all()}
+    for path in sorted(quiz_dir.glob("*.yaml")):
+        data = yaml.safe_load(path.read_text())
+        if data["title"] in existing_titles:
+            continue
+        quiz = models.Quiz(title=data["title"], description=data.get("description", ""))
+        db.add(quiz)
+        db.flush()
+        for i, q in enumerate(data["questions"]):
+            options = [str(o) for o in q["options"]]
+            correct = str(q["correct"])
+            db.add(models.Question(
+                quiz_id=quiz.id,
+                text=q["text"],
+                options=options,
+                correct_index=options.index(correct),
+                order=i,
+            ))
+        existing_titles.add(data["title"])
+    db.commit()
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    db = next(get_db())
+    try:
+        _seed_from_yaml(db)
+    finally:
+        db.close()
+    yield
+
+
+app = FastAPI(title="Web Quiz API", lifespan=lifespan)
 
 _cors_origins = os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",")
 app.add_middleware(

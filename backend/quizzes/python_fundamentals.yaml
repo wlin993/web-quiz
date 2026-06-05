@@ -1,0 +1,14 @@
+title: Python Fundamentals
+description: Core Python concepts
+questions:
+  - text: What is the output of type([]) in Python?
+    options: ["<class list>", "<class array>", list, array]
+    correct: "<class list>"
+
+  - text: Which of these creates a tuple?
+    options: ["[1, 2]", "{1, 2}", "(1, 2)", "<1, 2>"]
+    correct: "(1, 2)"
+
+  - text: What does len("hello") return?
+    options: [4, 5, 6, Error]
+    correct: 5
